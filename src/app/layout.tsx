@@ -1,25 +1,24 @@
+// src/app/layout.tsx
 import './globals.css';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
-import ClientLayoutWrapper from '@/components/ClientLayoutWrapper';
 
 export const metadata: Metadata = {
-  title: '星座网站',
-  description: '一个由Mike独立开发的星座网站',
+  title: '蓝恩星语 | LanEn Zodiac',
+  description: '基于专业星座算法与浪漫美学的星座网站',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh">
-      <body className="flex flex-col min-h-screen">
-        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
-
-        <footer className="bg-gray-200 text-center p-4">
-          &copy; 2025 Mike Xiu 版权所有
-        </footer>
+      <body className="min-h-screen flex flex-col bg-black text-white font-sans">
+        <LanguageProvider>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

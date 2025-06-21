@@ -1,6 +1,7 @@
-import { NextResponse } from 'next/server';
-import { zodiacSigns } from '@/data/zodiac';
+import zodiacData from '../../../data/zodiac';
 
 export async function GET() {
-  return NextResponse.json(zodiacSigns);
+  return new Response(JSON.stringify(zodiacData), {
+    headers: { 'Content-Type': 'application/json' }
+  });
 }
