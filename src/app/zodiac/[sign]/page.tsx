@@ -1,5 +1,5 @@
 import ZodiacDetailClient from './ZodiacDetailClient';
-import { zodiacSigns } from '@/data/zodiac';
+import zodiacSigns from '@/data/zodiac';
 
 export async function generateStaticParams() {
   return zodiacSigns.map((sign) => ({
