@@ -1,7 +1,7 @@
-import zodiacData from '../../../data/zodiac';
+// src/app/api/zodiac/route.ts
+import { NextResponse } from 'next/server';
+import zodiacSigns from '@/data/zodiac';
 
 export async function GET() {
-  return new Response(JSON.stringify(zodiacData), {
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return NextResponse.json(zodiacSigns);
 }

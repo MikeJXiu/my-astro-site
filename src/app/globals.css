@@ -1,35 +1,28 @@
 @import "tailwindcss";
 
-/* ✅ 引入 Google 字体（中英支持） */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
-
-/* 导航菜单通用字体类 */
-.nav-font {
-  font-family: 'Cinzel', serif;
-}
 
 :root {
   --background: #ffffff;
   --foreground: #f0f0f0;
-
-  /* ✅ 定义全局字体变量 */
   --font-serif-cn: 'Noto Serif SC', serif;
   --font-serif-en: 'Playfair Display', serif;
 }
 
 body {
   @apply bg-cover bg-center;
-
   background-image: url('/background.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #0a0a0a;
   color: var(--foreground);
-
-  /* ✅ 应用新字体（中文优先） */
   font-family: var(--font-serif-cn), var(--font-serif-en), serif;
+}
+
+.nav-font {
+  font-family: 'Cinzel', serif;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -40,7 +33,6 @@ body {
   scrollbar-width: none;
 }
 
-/* ✅ 按钮 hover 动效 */
 .button-hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -49,3 +41,168 @@ body {
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
 }
 
+/* ✅ 手机端优化 */
+@media (max-width: 768px) {
+  .homepage-button {
+    font-size: 1.25rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  header {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  header img {
+    height: 9rem !important;
+    margin-bottom: 0.25rem;
+  }
+
+  .banner-top,
+  .banner-bottom {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: hidden !important;
+  }
+
+  footer {
+    margin-top: 0.25rem !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  main {
+    padding-top: 0.25rem !important;
+    padding-bottom: 1.5rem !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    margin-bottom: 0.25rem !important;
+  }
+
+  main {
+    margin-top: -0.25rem !important;
+  }
+
+  .banner-top,
+  .banner-bottom {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 星座详情页视觉优化样式 */
+  .zodiac-title {
+    font-weight: 800;
+    font-size: 2.75rem;
+    background: linear-gradient(to right, #e0e7ff, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .zodiac-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+  .zodiac-card:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.12);
+  }
+
+  .zodiac-label {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #c4b5fd;
+    letter-spacing: 0.04em;
+  }
+
+  .zodiac-value {
+    font-size: 1rem;
+    color: #f1f5f9;
+    line-height: 1.75;
+  }
+}
+
+/* ✅ 进一步优化星座详情卡片样式 */
+.zodiac-title {
+  font-weight: 800;
+  font-size: 2.75rem;
+  background: linear-gradient(to right, #f0abfc, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.zodiac-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 0.75rem 1rem; /* 减少内边距 */
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  margin-bottom: 0.75rem; /* 减少卡片间距 */
+  transition: all 0.3s ease;
+}
+.zodiac-card:hover {
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
+}
+
+.zodiac-label {
+  font-size: 1.2rem; /* 略增字体 */
+  font-weight: 600;
+  color: #d8b4fe;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.4rem;
+}
+
+.zodiac-value {
+  font-size: 1.05rem;
+  color: #e2e8f0;
+  line-height: 1.6;
+  text-align: left; /* 列表左对齐 */
+}
+
+/* 两列布局（大屏） */
+@media (min-width: 768px) {
+  .zodiac-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem; /* 更紧凑间距 */
+  }
+}
+
+/* 单列布局（小屏） */
+@media (max-width: 767px) {
+  .zodiac-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+.zodiac-row-pair {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+/* 手机端自动改为纵向 */
+@media (max-width: 768px) {
+  .zodiac-row-pair {
+    flex-direction: column;
+  }
+}

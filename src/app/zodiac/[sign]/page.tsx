@@ -1,12 +1,8 @@
-import ZodiacDetailClient from './ZodiacDetailClient';
-import zodiacSigns from '@/data/zodiac';
+// /app/zodiac/[sign]/page.tsx
+'use client'
 
-export async function generateStaticParams() {
-  return zodiacSigns.map((sign) => ({
-    sign: sign.nameEn.toLowerCase(),
-  }));
-}
+import ZodiacDetailClient from './ZodiacDetailClient'
 
-export default function ZodiacDetailPage({ params }: { params: { sign: string } }) {
-  return <ZodiacDetailClient sign={params.sign} />;
+export default function Page() {
+  return <ZodiacDetailClient />
 }

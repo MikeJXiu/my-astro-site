@@ -25,8 +25,8 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-full z-50 bg-transparent px-4 sm:px-8 lg:px-12 py-2">
-      <div className="flex flex-col items-center w-full max-w-[1600px] mx-auto">
+    <header className="w-full z-50 bg-transparent px-4 sm:px-8 lg:px-12 py-0">
+      <div className="header-container flex flex-col items-center w-full max-w-[1600px] mx-auto mb-0 sm:mb-0">
         <div className="flex items-center gap-4">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
@@ -36,13 +36,13 @@ export default function Header() {
               width={0}
               height={0}
               sizes="100vw"
-              className="h-[9rem] sm:h-[10rem] w-auto object-contain drop-shadow-xl"
+              className="h-[6rem] sm:h-[10rem] w-auto object-contain drop-shadow-xl mb-2"
               priority
             />
           </Link>
 
-          {/* Nav & Language */}
-          <div className="flex items-center overflow-hidden">
+          {/* Nav & Language - hidden on mobile */}
+          <div className="hidden sm:flex items-center overflow-hidden">
             <nav className="overflow-x-auto hide-scrollbar whitespace-nowrap flex gap-1.5 sm:gap-2 md:gap-3 text-sm sm:text-base drop-shadow-md">
               {navItems.map((item) => {
                 const isActive = pathname === item.path;

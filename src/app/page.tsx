@@ -3,9 +3,20 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function HomePage() {
   const { language } = useLanguage();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const featureGroups = [
     {
@@ -46,22 +57,24 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen text-white px-4 pt-1 pb-10">
-      {/* 顶部横幅图 */}
-      <div className="w-full max-w-[900px] mx-auto mb-4 px-2">
-        <Image
-          src={`/images/banner/banner-top-${language}.png`}
-          alt="LanEn Zodiac Top Banner"
-          width={900}
-          height={300}
-          className="w-full h-auto object-contain"
-          priority
-        />
-      </div>
+      {/* 顶部横幅：仅桌面端显示 */}
+      {!isMobile && (
+        <div className="w-full max-w-[900px] mx-auto mt-0 px-1 mb-1">
+          <Image
+            src={`/images/banner/banner-top-${language}.png`}
+            alt="LanEn Zodiac Top Banner"
+            width={900}
+            height={300}
+            className="w-full h-auto object-contain banner-top"
+            priority
+          />
+        </div>
+      )}
 
       {/* 主体功能按钮区域 */}
-      <main className="flex flex-col items-center justify-center">
+      <main className={`flex flex-col items-center justify-center ${isMobile ? 'mt-[-4rem] mb-0' : 'mt-2 mb-4'}`}>
         {featureGroups.map((group, index) => (
-          <section key={index} className="w-full max-w-6xl mb-12">
+          <section key={index} className="w-full max-w-6xl mb-10">
             <h2 className="text-xl lg:text-2xl font-semibold mb-4 text-left text-yellow-200">
               {group.title[language]}
             </h2>
@@ -70,7 +83,7 @@ export default function HomePage() {
                 <Link
                   key={feature.path}
                   href={feature.path}
-                  className={`bg-white/10 p-6 rounded-xl shadow-md text-center text-lg font-medium transition backdrop-blur ${group.colorClass}`}
+                  className={`bg-white/10 p-6 rounded-xl shadow-md text-center text-lg font-medium transition backdrop-blur active:scale-[0.97] active:bg-white/20 ${group.colorClass}`}
                 >
                   {feature.label[language]}
                 </Link>
@@ -80,16 +93,18 @@ export default function HomePage() {
         ))}
       </main>
 
-      {/* 底部横幅图 */}
-      <div className="w-full max-w-[900px] mx-auto mt-1 px-2">
-        <Image
-          src={`/images/banner/banner-bottom-${language}.png`}
-          alt="LanEn Zodiac Bottom Banner"
-          width={900}
-          height={300}
-          className="w-full h-auto object-contain"
-        />
-      </div>
+      {/* 底部横幅图：仅桌面端显示 */}
+      {!isMobile && (
+        <div className="w-full max-w-[900px] mx-auto mt-2 px-2 banner-bottom">
+          <Image
+            src={`/images/banner/banner-bottom-${language}.png`}
+            alt="LanEn Zodiac Bottom Banner"
+            width={900}
+            height={300}
+            className="w-full h-auto object-contain"
+          />
+        </div>
+      )}
     </div>
   );
 }
