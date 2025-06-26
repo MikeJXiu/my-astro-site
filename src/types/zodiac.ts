@@ -1,13 +1,14 @@
 // src/types/zodiac.ts
 
-export type ZodiacSign = {
-    name: string;
-    nameEn: string;
-    dateRange: string;
-    dateRangeEn: string;
-    element: string;
-    elementEn: string;
-    description: string;
-    descriptionEn: string;
-  };
-  
+export type Zodiac = {
+  name: string;
+  nameZh: string;
+  nameEn: string;
+  dateRangeZh: string;
+  dateRangeEn: string;
+  elementZh: string;
+  elementEn: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  symbol: string;
+};

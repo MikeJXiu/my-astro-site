@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 export default function HomePage() {
   const { language } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
+  const isZh = language === 'zh';
 
   useEffect(() => {
     const checkMobile = () => {
@@ -20,15 +21,24 @@ export default function HomePage() {
 
   const featureGroups = [
     {
+      title: { zh: '🌞 运势中心', en: '🌞 Horoscope Center' },
+      colorClass: 'hover:bg-blue-400/20 hover:shadow-blue-400/20',
+      features: [
+        { path: '/horoscope/daily', label: { zh: '每日运势', en: 'Daily Horoscope' } },
+        { path: '/horoscope/monthly', label: { zh: '每月运势', en: 'Monthly Horoscope' } },
+        { path: '/horoscope/yearly', label: { zh: '年度运势', en: 'Yearly Horoscope' } },
+      ],
+    },
+    {
       title: { zh: '⭐ 基础服务', en: '⭐ Basic Services' },
       colorClass: 'hover:bg-yellow-400/20 hover:shadow-yellow-400/20',
       features: [
         { path: '/zodiac', label: { zh: '星座列表', en: 'Zodiac Signs' } },
-        { path: '/horoscope', label: { zh: '每日运势', en: 'Daily Horoscope' } },
         { path: '/compatibility', label: { zh: '配对查询', en: 'Compatibility Match' } },
         { path: '/personality', label: { zh: '星座性格', en: 'Personality' } },
         { path: '/lucky', label: { zh: '幸运数字', en: 'Lucky Number' } },
         { path: '/ranking', label: { zh: '排行榜', en: 'Ranking' } },
+        { path: '/advice', label: { zh: '今日宜忌', en: 'Daily Advice' } },
       ],
     },
     {
@@ -36,28 +46,24 @@ export default function HomePage() {
       colorClass: 'hover:bg-purple-400/20 hover:shadow-purple-400/20',
       features: [
         { path: '/birthchart', label: { zh: '星盘生成', en: 'Birth Chart' } },
-        { path: '/calendar', label: { zh: '运势月历', en: 'Monthly Calendar' } },
-        { path: '/advice', label: { zh: '今日宜忌', en: 'Daily Advice' } },
         { path: '/luckyitem', label: { zh: '幸运物推荐', en: 'Lucky Items' } },
         { path: '/astrocast', label: { zh: '星象播报', en: 'Astro Forecast' } },
+        { path: '/zodiac-facts', label: { zh: '星座冷知识', en: 'Zodiac Facts' } },
       ],
     },
     {
-      title: { zh: '🌟 趣味互动 & 会员中心', en: '🌟 Fun & Membership' },
+      title: { zh: '✨ 趣味互动', en: '✨ Fun Zone' },
       colorClass: 'hover:bg-pink-400/20 hover:shadow-pink-400/20',
       features: [
         { path: '/test', label: { zh: '爱情测试', en: 'Love Test' } },
         { path: '/quiz', label: { zh: '星座测评合集', en: 'Zodiac Quizzes' } },
         { path: '/tarot', label: { zh: '塔罗占卜', en: 'Tarot Reading' } },
-        { path: '/celeb', label: { zh: '名人星盘解析', en: 'Celebrity Charts' } },
-        { path: '/member', label: { zh: '会员中心', en: 'Membership' } },
       ],
     },
   ];
 
   return (
     <div className="min-h-screen text-white px-4 pt-1 pb-10">
-      {/* 顶部横幅：仅桌面端显示 */}
       {!isMobile && (
         <div className="w-full max-w-[900px] mx-auto mt-0 px-1 mb-1">
           <Image
@@ -71,29 +77,35 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* 主体功能按钮区域 */}
       <main className={`flex flex-col items-center justify-center ${isMobile ? 'mt-[-4rem] mb-0' : 'mt-2 mb-4'}`}>
-        {featureGroups.map((group, index) => (
-          <section key={index} className="w-full max-w-6xl mb-10">
-            <h2 className="text-xl lg:text-2xl font-semibold mb-4 text-left text-yellow-200">
-              {group.title[language]}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {group.features.map((feature) => (
-                <Link
-                  key={feature.path}
-                  href={feature.path}
-                  className={`bg-white/10 p-6 rounded-xl shadow-md text-center text-lg font-medium transition backdrop-blur active:scale-[0.97] active:bg-white/20 ${group.colorClass}`}
-                >
-                  {feature.label[language]}
-                </Link>
-              ))}
-            </div>
-          </section>
-        ))}
+        {featureGroups.map((group, index) => {
+          const isAdvanced = group.title.zh.includes('高阶');
+          const customGrid =
+            isAdvanced
+              ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4' // 一行四个按钮，移动端两列
+              : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3';
+
+          return (
+            <section key={index} className="w-full max-w-6xl mb-10">
+              <h2 className="text-xl lg:text-2xl font-semibold mb-4 text-left text-yellow-200">
+                {language === 'zh' ? group.title.zh : group.title.en}
+              </h2>
+              <div className={`grid gap-6 ${customGrid}`}>
+                {group.features.map((feature) => (
+                  <Link
+                    key={feature.path}
+                    href={feature.path}
+                    className={`bg-white/10 p-6 rounded-xl shadow-md text-center text-lg font-medium transition backdrop-blur active:scale-[0.97] active:bg-white/20 ${group.colorClass}`}
+                  >
+                    {language === 'zh' ? feature.label.zh : feature.label.en}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          );
+        })}
       </main>
 
-      {/* 底部横幅图：仅桌面端显示 */}
       {!isMobile && (
         <div className="w-full max-w-[900px] mx-auto mt-2 px-2 banner-bottom">
           <Image
