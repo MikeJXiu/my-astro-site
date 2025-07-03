@@ -24,9 +24,9 @@ export default function HomePage() {
       title: { zh: '🌞 运势中心', en: '🌞 Horoscope Center' },
       colorClass: 'hover:bg-blue-400/20 hover:shadow-blue-400/20',
       features: [
-        { path: '/horoscope/daily', label: { zh: '每日运势', en: 'Daily Horoscope' } },
-        { path: '/horoscope/monthly', label: { zh: '每月运势', en: 'Monthly Horoscope' } },
-        { path: '/horoscope/yearly', label: { zh: '年度运势', en: 'Yearly Horoscope' } },
+        { path: '/horoscope', label: { zh: '每日运势', en: 'Daily Horoscope' } },
+        { path: '/horoscope', label: { zh: '每月运势', en: 'Monthly Horoscope' } },
+        { path: '/horoscope', label: { zh: '年度运势', en: 'Yearly Horoscope' } },
       ],
     },
     {

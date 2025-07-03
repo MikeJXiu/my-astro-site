@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState } from 'react';
 
 // 下面保持不变
-type Language = 'zh' | 'en';
+export type Language = 'zh' | 'en';
 
 interface LanguageContextType {
   language: Language;
