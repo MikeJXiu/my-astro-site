@@ -35,12 +35,6 @@ export const dailyHoroscopeData: DailyHoroscopeTemplate[] = [
     keywords: {
       zh: ['冒险', '领导力', '情感表达'],
       en: ['adventure', 'leadership', 'emotional expression']
-    },
-    lucky_items: {
-      color: { zh: '红色', en: 'Red' },
-      number: 9,
-      date: '2025-06-30',
-      constellation: { zh: '狮子座', en: 'Leo' }
     }
   }
 ]

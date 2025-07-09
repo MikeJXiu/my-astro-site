@@ -1,6 +1,6 @@
 import { MonthlyHoroscopeTemplate } from '@/types/horoscope'
 
-export const virgoMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
+export const monthlyHoroscopeData: MonthlyHoroscopeTemplate[] = [
   {
     id: 1,
     summary: {
@@ -34,12 +34,6 @@ export const virgoMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
     keywords: {
       zh: ['计划', '谨慎', '沟通', '健康'],
       en: ['planning', 'caution', 'communication', 'health'],
-    },
-    lucky_items: {
-      color: { zh: '象牙白', en: 'ivory' } ,
-      number: 5,
-      date: 'auto',
-      constellation: { zh: '金牛座', en: 'Taurus' },
-    },
+    }
   },
 ]

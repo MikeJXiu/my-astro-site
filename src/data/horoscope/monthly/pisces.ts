@@ -1,6 +1,6 @@
 import { MonthlyHoroscopeTemplate } from '@/types/horoscope'
 
-export const piscesMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
+export const monthlyHoroscopeData: MonthlyHoroscopeTemplate[] = [
   {
     id: 1,
     summary: {
@@ -34,12 +34,6 @@ export const piscesMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
     keywords: {
       zh: ['灵感', '感性', '直觉', '疗愈'],
       en: ['inspiration', 'sensitivity', 'intuition', 'healing'],
-    },
-    lucky_items:  {
-      color: { zh: '海蓝色', en: 'ocean blue' } ,
-      number: 3,
-      date: 'auto',
-      constellation: { zh: '巨蟹座', en: 'Cancer' },
-    },
+    }
   },
 ]

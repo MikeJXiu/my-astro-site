@@ -2,7 +2,7 @@
 
 import { MonthlyHoroscopeTemplate } from '@/types/horoscope';
 
-export const cancerMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
+export const monthlyHoroscopeData: MonthlyHoroscopeTemplate[] = [
   {
     id: 1,
     summary: {
@@ -36,12 +36,6 @@ export const cancerMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
     keywords: {
       zh: ['家庭', '情绪', '安定', '直觉'],
       en: ['family', 'emotion', 'stability', 'intuition'],
-    },
-    lucky_items: {
-      color: { zh: '乳白色', en: 'ivory' } ,
-      number: 2,
-      date: 'auto',
-      constellation: { zh: '处女座', en: 'Virgo' },
-    },
+    }
   },
 ];

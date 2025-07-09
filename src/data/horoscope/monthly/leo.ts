@@ -1,6 +1,6 @@
 import { MonthlyHoroscopeTemplate } from '@/types/horoscope'
 
-export const leoMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
+export const monthlyHoroscopeData: MonthlyHoroscopeTemplate[] = [
   {
     id: 1,
     summary: {
@@ -34,12 +34,6 @@ export const leoMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
     keywords: {
       zh: ['领导力', '魅力', '节奏', '社交'],
       en: ['leadership', 'charisma', 'balance', 'social'],
-    },
-    lucky_items: {
-      color: { zh: '金色', en: 'gold' } ,
-      number: 1,
-      date: 'auto',
-      constellation: { zh: '白羊座', en: 'Aries' },
-    },
+    }
   },
 ]

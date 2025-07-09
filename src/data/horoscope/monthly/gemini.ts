@@ -2,7 +2,7 @@
 
 import { MonthlyHoroscopeTemplate } from '@/types/horoscope';
 
-export const geminiMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
+export const monthlyHoroscopeData: MonthlyHoroscopeTemplate[] = [
   {
     id: 1,
     summary: {
@@ -36,12 +36,6 @@ export const geminiMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
     keywords: {
       zh: ['沟通', '适应', '弹性', '学习'],
       en: ['communication', 'adaptability', 'flexibility', 'learning'],
-    },
-    lucky_items: {
-      color: { zh: '浅黄色', en: 'light yellow' } ,
-      number: 5,
-      date: 'auto',
-      constellation: { zh: '天秤座', en: 'Libra' },
-    },
+    }
   },
 ];

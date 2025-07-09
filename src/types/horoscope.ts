@@ -4,12 +4,9 @@ export type LangText = {
   en: string
 }
 
-/**
- * ✅ 每日运势模板（每个星座多条）
- */
 export interface DailyHoroscopeTemplate {
   id: number
-  date: string // 例如：2025-06-30，可支持精确日运势
+  date: string // 例如：2025-07-03
   summary: LangText
   career: LangText
   love: LangText
@@ -21,17 +18,8 @@ export interface DailyHoroscopeTemplate {
     zh: string[]
     en: string[]
   }
-  lucky_items: {
-    color: LangText
-    number: number
-    date: string // lucky date，自动生成每日日期
-    constellation: LangText
-  }
 }
 
-/**
- * ✅ 每月运势模板（每个星座多条）
- */
 export interface MonthlyHoroscopeTemplate {
   id: number
   summary: LangText
@@ -44,12 +32,6 @@ export interface MonthlyHoroscopeTemplate {
   keywords: {
     zh: string[]
     en: string[]
-  }
-  lucky_items: {
-    color: LangText
-    number: number
-    date: string // lucky date，每月随机生成
-    constellation: LangText
   }
 }
 
@@ -70,21 +52,14 @@ export interface YearlyHoroscopeTemplate {
     zh: string[]
     en: string[]
   };
-  lucky_items: {
-    color: LangText
-    number: number
-    constellation: LangText
-    month: {
-      zh: string
-      en: string
-    };
-  }
 }
 
 export interface LuckyItem {
-  color: { zh: string; en: string }
-  number: number
-  date: string
-  constellation: { zh: string; en: string }
+  color: LangText
+  direction: LangText
+  item: LangText
+  number: string[]
+  time: LangText
+  constellation: LangText
 }
 

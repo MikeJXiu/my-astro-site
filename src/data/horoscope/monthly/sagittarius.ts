@@ -1,6 +1,6 @@
 import { MonthlyHoroscopeTemplate } from '@/types/horoscope'
 
-export const sagittariusMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
+export const monthlyHoroscopeData: MonthlyHoroscopeTemplate[] = [
   {
     id: 1,
     summary: {
@@ -34,12 +34,6 @@ export const sagittariusMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
     keywords: {
       zh: ['扩展', '旅行', '学习', '热情'],
       en: ['expansion', 'travel', 'learning', 'passion'],
-    },
-    lucky_items: {
-      color: { zh: '藏蓝色', en: 'navy blue' } ,
-      number: 12,
-      date: 'auto',
-      constellation: { zh: '狮子座', en: 'Leo' },
-    },
+    }
   },
 ]

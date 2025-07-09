@@ -1,102 +1,98 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import '@/styles/horoscope.css'
+import React from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import getHoroscopeIndex from '@/lib/horoscope/getHoroscopeIndex'
-import { getLuckyItems } from '@/lib/horoscope/getLuckyItems'
-
+import {
+  FaQuoteLeft,
+  FaHeart,
+  FaBriefcase,
+  FaMoneyBillWave,
+  FaHeartbeat,
+  FaLightbulb,
+  FaBell,
+  FaStar,
+} from 'react-icons/fa'
 import type { MonthlyHoroscopeTemplate } from '@/types/horoscope'
-import type { ZodiacDetail } from '@/types/zodiacDetail'
 
-interface Props {
-  sign: ZodiacDetail
+interface MonthlyCardProps {
+  sign: { zh: string; en: string }
   data: MonthlyHoroscopeTemplate
 }
 
-export default function MonthlyCard({ sign, data }: Props) {
+const MonthlyCard: React.FC<MonthlyCardProps> = ({ sign, data }) => {
   const { language } = useLanguage()
-  const isZh = language === 'zh'
 
-  const [lucky, setLucky] = useState<{
-    color: string
-    number: string
-    date: string
-    constellation: string
-  } | null>(null)
-
-  useEffect(() => {
-    const month = new Date().getMonth() + 1
-    const seed = Date.now() + month * 100000
-    const pool = getLuckyItems(sign.symbol)
-    const index = getHoroscopeIndex(sign.symbol, seed, pool)
-    const selected = pool[index]
-
-    if (selected) {
-      setLucky({
-        color: isZh ? selected.color.zh : selected.color.en,
-        number: selected.number.toString(),
-        date: selected.date,
-        constellation: isZh ? selected.constellation.zh : selected.constellation.en,
-      })
-    }
-  }, [sign.symbol, isZh])
-
-  const sectionTitle = (zh: string, en: string) => (
-    <h3 className="font-semibold text-lg mt-4 mb-1 text-purple-200">
-      {isZh ? zh : en}
-    </h3>
-  )
-
-  const sectionText = (zh: string, en: string) => (
-    <p className="text-sm text-white leading-relaxed whitespace-pre-wrap">
-      {isZh ? zh : en}
-    </p>
+  const Section = ({
+    icon,
+    label,
+    content,
+  }: {
+    icon: React.ReactNode
+    label: string
+    content: string
+  }) => (
+    <div className="horoscope-card fade-in">
+      <div className="horoscope-icon">{icon}</div>
+      <div>
+        <div className="font-semibold mb-1 text-purple-100">{label}</div>
+        <div className="text-white/90 leading-relaxed">{content}</div>
+      </div>
+    </div>
   )
 
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg max-w-3xl mx-auto mt-6 border border-white/20">
-      {sectionTitle('整体运势', 'Monthly Summary')}
-      {sectionText(data.summary.zh, data.summary.en)}
+    <div className="w-full max-w-3xl space-y-6 mx-auto">
+      <h2 className="text-2xl font-bold text-center mb-4 tracking-wide text-purple-100">
+        {language === 'zh'
+          ? `${sign.zh}每月运势`
+          : `${sign.en} Monthly Horoscope`}
+      </h2>
 
-      {sectionTitle('事业', 'Career')}
-      {sectionText(data.career.zh, data.career.en)}
-
-      {sectionTitle('爱情', 'Love')}
-      {sectionText(data.love.zh, data.love.en)}
-
-      {sectionTitle('财运', 'Finance')}
-      {sectionText(data.finance.zh, data.finance.en)}
-
-      {sectionTitle('健康', 'Health')}
-      {sectionText(data.health.zh, data.health.en)}
-
-      {sectionTitle('建议', 'Advice')}
-      {sectionText(data.advice.zh, data.advice.en)}
-
-      {sectionTitle('提醒', 'Reminder')}
-      {sectionText(data.reminder.zh, data.reminder.en)}
-
-      {sectionTitle('关键词', 'Keywords')}
-      {sectionText(data.keywords.zh.join(' / '), data.keywords.en.join(' / '))}
-
-      {lucky && (
-        <>
-          {sectionTitle('本月幸运项', 'Lucky Items This Month')}
-          <p className="text-sm text-white leading-relaxed whitespace-pre-wrap">
-            {isZh ? '幸运颜色：' : 'Lucky Color: '}
-            {lucky.color}
-            <br />
-            {isZh ? '幸运数字：' : 'Lucky Number: '}
-            {lucky.number}
-            <br />
-            {isZh ? '幸运日期：' : 'Lucky Date: '}
-            {lucky.date}
-            <br />
-            {isZh ? '幸运星座：' : 'Lucky Constellation: '}
-            {lucky.constellation}
-          </p>
-        </>
-      )}
+      <div className="horoscope-grid">
+        <Section
+          icon={<FaQuoteLeft />}
+          label={language === 'zh' ? '概要' : 'Summary'}
+          content={data.summary[language]}
+        />
+        <Section
+          icon={<FaHeart />}
+          label={language === 'zh' ? '爱情' : 'Love'}
+          content={data.love[language]}
+        />
+        <Section
+          icon={<FaBriefcase />}
+          label={language === 'zh' ? '事业' : 'Career'}
+          content={data.career[language]}
+        />
+        <Section
+          icon={<FaMoneyBillWave />}
+          label={language === 'zh' ? '财运' : 'Finance'}
+          content={data.finance[language]}
+        />
+        <Section
+          icon={<FaHeartbeat />}
+          label={language === 'zh' ? '健康' : 'Health'}
+          content={data.health[language]}
+        />
+        <Section
+          icon={<FaLightbulb />}
+          label={language === 'zh' ? '建议' : 'Advice'}
+          content={data.advice[language]}
+        />
+        <Section
+          icon={<FaBell />}
+          label={language === 'zh' ? '提醒' : 'Reminder'}
+          content={data.reminder[language]}
+        />
+        <Section
+          icon={<FaStar />}
+          label={language === 'zh' ? '关键词' : 'Keywords'}
+          content={data.keywords[language].join(', ')}
+        />
+      </div>
     </div>
   )
 }
+
+export default MonthlyCard

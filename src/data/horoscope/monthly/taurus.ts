@@ -2,7 +2,7 @@
 
 import { MonthlyHoroscopeTemplate } from '@/types/horoscope';
 
-export const taurusMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
+export const monthlyHoroscopeData: MonthlyHoroscopeTemplate[] = [
   {
     id: 1,
     summary: {
@@ -36,12 +36,6 @@ export const taurusMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
     keywords: {
       zh: ['稳定', '沟通', '积累', '耐心'],
       en: ['stability', 'communication', 'accumulation', 'patience'],
-    },
-    lucky_items: {
-      color: { zh: '绿色', en: 'emerald' } ,
-      number: 4,
-      date: 'auto',
-      constellation: { zh: '处女座', en: 'Virgo' },
-    },
+    }
   },
 ];

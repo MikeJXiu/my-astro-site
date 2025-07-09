@@ -1,0 +1,57 @@
+/* /styles/horoscope.css */
+
+.horoscope-card {
+  @apply bg-white/10 backdrop-blur-md rounded-lg p-4 shadow-md flex items-start gap-3 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
+}
+
+.horoscope-icon {
+  @apply text-purple-300 text-lg mt-1;
+}
+
+.horoscope-grid {
+  @apply flex flex-col gap-4;
+}
+
+.horoscope-grid-summary,
+.horoscope-grid-lucky {
+  @apply w-full;
+}
+
+.lucky-items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-items: center;
+  height: 100%;
+}
+
+/* 手机端每行一个幸运项 */
+@media (max-width: 768px) {
+  .lucky-items-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lucky-item-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.5rem;
+  padding: 0.25rem 0;
+  text-align: left;
+  height: 100%;
+}
+
+.lucky-item-icon {
+  @apply text-purple-300 text-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.lucky-item-text {
+  @apply text-white/90 text-sm leading-tight;
+}

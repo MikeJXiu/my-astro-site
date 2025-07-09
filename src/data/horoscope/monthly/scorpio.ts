@@ -1,6 +1,6 @@
 import { MonthlyHoroscopeTemplate } from '@/types/horoscope'
 
-export const scorpioMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
+export const monthlyHoroscopeData: MonthlyHoroscopeTemplate[] = [
   {
     id: 1,
     summary: {
@@ -34,12 +34,6 @@ export const scorpioMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
     keywords: {
       zh: ['专注', '自省', '神秘', '成长'],
       en: ['focus', 'introspection', 'mystery', 'growth'],
-    },
-    lucky_items: {
-      color: { zh: '深紫色', en: 'deep purple' } ,
-      number: 8,
-      date: 'auto',
-      constellation: { zh: '处女座', en: 'Virgo' },
-    },
+    }
   },
 ]

@@ -1,6 +1,6 @@
 import { DailyHoroscopeTemplate } from '@/types/horoscope'
 
-export const dailyHoroscope: DailyHoroscopeTemplate[] = [
+export const dailyHoroscopeData: DailyHoroscopeTemplate[] = [
   {
     id: 1,
     date: '2025-06-30',
@@ -35,18 +35,6 @@ export const dailyHoroscope: DailyHoroscopeTemplate[] = [
     keywords: {
       zh: ['计划', '分析', '信任'],
       en: ['planning', 'analysis', 'trust'],
-    },
-    lucky_items: {
-      color: {
-        zh: '藏青色',
-        en: 'Navy Blue',
-      },
-      number: 5,
-      date: '2025-06-30',
-      constellation: {
-        zh: '金牛座',
-        en: 'Taurus',
-      },
-    },
+    }
   },
 ]

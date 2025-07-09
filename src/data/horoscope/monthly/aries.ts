@@ -2,7 +2,7 @@
 
 import { MonthlyHoroscopeTemplate } from '@/types/horoscope';
 
-export const ariesMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
+export const monthlyHoroscopeData: MonthlyHoroscopeTemplate[] = [
   {
     id: 1,
     summary: {
@@ -36,13 +36,6 @@ export const ariesMonthlyHoroscope: MonthlyHoroscopeTemplate[] = [
     keywords: {
       zh: ['突破', '主动', '领导力', '自律'],
       en: ['breakthrough', 'initiative', 'leadership', 'discipline'],
-    },
-    lucky_items: 
-      {
-        color: { zh: '天青色', en: 'sky cyan' },
-        number: 11,
-        date: 'auto',
-        constellation: { zh: '双子座', en: 'Gemini' },
-      }
+    }
   },
 ];
