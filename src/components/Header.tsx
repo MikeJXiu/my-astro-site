@@ -12,7 +12,7 @@ export default function Header() {
   const navItems = [
     { path: '/', label: { zh: '首页', en: 'Home' } },
     { path: '/zodiac', label: { zh: '星座列表', en: 'Zodiac Signs' } },
-    { path: '/horoscope', label: { zh: '每日运势', en: 'Daily Horoscope' } },
+    { path: '/horoscope', label: { zh: '今日运势', en: 'Daily Horoscope' } },
     { path: '/compatibility', label: { zh: '配对查询', en: 'Compatibility' } },
     { path: '/natal', label: { zh: '星盘生成', en: 'Natal Chart' } },
     { path: '/dosdonts', label: { zh: '今日宜忌', en: 'Daily Advice' } },
@@ -29,14 +29,14 @@ export default function Header() {
       <div className="header-container flex flex-col items-center w-full max-w-[1600px] mx-auto mb-0 sm:mb-0">
         <div className="flex items-center gap-4">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0 flex items-center">
             <Image
-              src={language === 'zh' ? '/images/logo-zh.png' : '/images/logo-en.png'}
+              src={language === 'zh' ? '/images/logo-zh-nav.png' : '/images/logo-en-nav.png'}
               alt="LanEn Zodiac Logo"
               width={0}
               height={0}
               sizes="100vw"
-              className="h-[6rem] sm:h-[10rem] w-auto object-contain drop-shadow-xl mb-2"
+              className="h-[4rem] sm:h-[6rem] w-auto object-contain drop-shadow-xl"
               priority
             />
           </Link>

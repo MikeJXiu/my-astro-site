@@ -20,8 +20,23 @@ interface MonthlyCardProps {
   data: MonthlyHoroscopeTemplate
 }
 
+// 中文月份数组
+const chineseMonths = [
+  '一月', '二月', '三月', '四月', '五月', '六月',
+  '七月', '八月', '九月', '十月', '十一月', '十二月',
+]
+
+// 英文月份数组
+const englishMonths = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+]
+
 const MonthlyCard: React.FC<MonthlyCardProps> = ({ sign, data }) => {
   const { language } = useLanguage()
+  const currentMonthIndex = new Date().getMonth()
+  const monthText =
+    language === 'zh' ? chineseMonths[currentMonthIndex] : englishMonths[currentMonthIndex]
 
   const Section = ({
     icon,
@@ -32,11 +47,13 @@ const MonthlyCard: React.FC<MonthlyCardProps> = ({ sign, data }) => {
     label: string
     content: string
   }) => (
-    <div className="horoscope-card fade-in">
-      <div className="horoscope-icon">{icon}</div>
+    <div className="horoscope-card fade-in flex items-start gap-3">
+      <div className="horoscope-icon mt-1">{icon}</div>
       <div>
-        <div className="font-semibold mb-1 text-purple-100">{label}</div>
-        <div className="text-white/90 leading-relaxed">{content}</div>
+        <div className="font-semibold mb-1 text-purple-100 text-left leading-snug">
+          {label}
+        </div>
+        <div className="text-white/90 leading-relaxed text-left">{content}</div>
       </div>
     </div>
   )
@@ -45,8 +62,8 @@ const MonthlyCard: React.FC<MonthlyCardProps> = ({ sign, data }) => {
     <div className="w-full max-w-3xl space-y-6 mx-auto">
       <h2 className="text-2xl font-bold text-center mb-4 tracking-wide text-purple-100">
         {language === 'zh'
-          ? `${sign.zh}每月运势`
-          : `${sign.en} Monthly Horoscope`}
+          ? `${sign.zh}${monthText}运势`
+          : `${sign.en} ${monthText} Horoscope`}
       </h2>
 
       <div className="horoscope-grid">

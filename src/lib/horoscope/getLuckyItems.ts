@@ -1,10 +1,10 @@
 import type { LangText, LuckyItem } from '@/types/horoscope'
 import seedrandom from 'seedrandom'
 
-// LangText 随机选择函数
+// 工具函数：从数组中使用 seed 随机挑选一个元素
 const pick = <T>(arr: T[], rng: () => number): T => arr[Math.floor(rng() * arr.length)]
 
-// 中文英文颜色选项（扩展版）
+// 扩展版颜色选项
 const colors: LangText[] = [
   { zh: '红色', en: 'Red' },
   { zh: '蓝色', en: 'Blue' },
@@ -23,7 +23,7 @@ const colors: LangText[] = [
   { zh: '米色', en: 'Beige' },
 ]
 
-// 方位选项
+// 扩展版幸运方向
 const directions: LangText[] = [
   { zh: '东方', en: 'East' },
   { zh: '西方', en: 'West' },
@@ -35,7 +35,7 @@ const directions: LangText[] = [
   { zh: '西北方', en: 'Northwest' },
 ]
 
-// 幸运物品选项
+// 扩展版幸运物品
 const items: LangText[] = [
   { zh: '水晶手链', en: 'Crystal Bracelet' },
   { zh: '星座项链', en: 'Zodiac Necklace' },
@@ -47,9 +47,12 @@ const items: LangText[] = [
   { zh: '红绳手链', en: 'Red String Bracelet' },
   { zh: '星星吊坠', en: 'Star Pendant' },
   { zh: '手写日记本', en: 'Notebook' },
+  { zh: '书签', en: 'Bookmark' },
+  { zh: '幸运钥匙圈', en: 'Lucky Keychain' },
+  { zh: '星空图案笔记本', en: 'Starry Notebook' },
 ]
 
-// 12 星座（LangText）
+// 12 星座英文索引（也可以用 LangText）
 const zodiacConstellations: LangText[] = [
   { zh: '白羊座', en: 'Aries' },
   { zh: '金牛座', en: 'Taurus' },
@@ -66,21 +69,20 @@ const zodiacConstellations: LangText[] = [
 ]
 
 /**
- * 根据 seedIndex 生成每日幸运项
+ * 根据传入 seed（如 '2-2025-07-10'）生成幸运项，保证每天每个星座唯一但一致
  */
-export function getLuckyItems(seedIndex: number): LuckyItem {
-  const rng = seedrandom(seedIndex.toString())
+export function getLuckyItems(seed: string): LuckyItem {
+  const rng = seedrandom(seed)
 
-  // 幸运时间
   const hour = Math.floor(rng() * 24)
-  const timeText = `${hour.toString().padStart(2, '0')}:00`
+  const time = `${hour.toString().padStart(2, '0')}:00`
 
   return {
     color: pick(colors, rng),
-    number: Array.from({ length: 3 }, () => (Math.floor(rng() * 9 + 1)).toString()),
-    constellation: pick(zodiacConstellations, rng),
+    number: Array.from({ length: 3 }, () => (Math.floor(rng() * 9) + 1).toString()),
     direction: pick(directions, rng),
-    time: { zh: timeText, en: timeText },
+    time: { zh: time, en: time },
     item: pick(items, rng),
+    constellation: pick(zodiacConstellations, rng),
   }
 }

@@ -43,11 +43,11 @@ const DailyTab = () => {
           <button
             key={sign.symbol}
             onClick={() => setSelectedSign(sign.symbol)}
-            className={`px-4 py-2 rounded-full border ${
+            className={`horoscope-sign-button ${
               selectedSign === sign.symbol
-                ? 'bg-purple-600 text-white'
-                : 'bg-white text-purple-600'
-            } transition duration-300`}
+                ? 'horoscope-sign-button-active'
+                : 'horoscope-sign-button-inactive'
+            }`}
           >
             {language === 'zh' ? sign.name_zh : sign.name_en}
           </button>

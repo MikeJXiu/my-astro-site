@@ -35,13 +35,17 @@ interface DailyHoroscopeCardProps {
 const DailyHoroscopeCard: React.FC<DailyHoroscopeCardProps> = ({ zodiac }) => {
   const { language } = useLanguage()
 
+  // 获取 zodiac 对应的 index
   const signIndex = zodiacSigns.findIndex((z) => z.symbol === zodiac.sign.en)
   const index = getHoroscopeIndex(signIndex, 'daily', zodiac.templates)
   const horoscope = zodiac.templates[index]
 
   if (!horoscope) return null
 
-  const luckyItems = getLuckyItems(signIndex)
+  // 用 zodiac.sign.en + 日期做唯一种子，确保每个星座每天不同
+  const today = new Date().toISOString().slice(0, 10)
+  const seedKey = `${zodiac.sign.en}-${today}`
+  const luckyItems = getLuckyItems(seedKey)
 
   const Section = ({
     icon,
@@ -53,10 +57,12 @@ const DailyHoroscopeCard: React.FC<DailyHoroscopeCardProps> = ({ zodiac }) => {
     content: string
   }) => (
     <div className="horoscope-card fade-in">
-      <div className="horoscope-icon">{icon}</div>
-      <div>
-        <div className="font-semibold mb-1 text-purple-100">{label}</div>
-        <div className="text-white/90 leading-relaxed">{content}</div>
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <div className="text-purple-200 text-lg">{icon}</div>
+          <div className="font-semibold text-purple-100">{label}</div>
+        </div>
+        <div className="text-white/90 leading-relaxed pl-7">{content}</div>
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ const ZodiacHoroscopeHeader = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="text-center px-4 py-12 relative z-10">
+    <div className="text-center px-4 py-1 relative z-10">
       <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-purple-700/30 to-purple-900/30 blur-xl opacity-70 rounded-xl pointer-events-none z-0" />
 
       <div className="relative z-10">

@@ -24,10 +24,10 @@ export default function HomePage() {
       title: { zh: '🌞 运势中心', en: '🌞 Horoscope Center' },
       colorClass: 'hover:bg-blue-400/20 hover:shadow-blue-400/20',
       features: [
-        { path: '/horoscope', label: { zh: '每日运势', en: 'Daily Horoscope' } },
-        { path: '/horoscope', label: { zh: '每月运势', en: 'Monthly Horoscope' } },
-        { path: '/horoscope', label: { zh: '年度运势', en: 'Yearly Horoscope' } },
-      ],
+        { path: '/horoscope?tab=daily', label: { zh: '今日运势', en: 'Daily Horoscope' } },
+        { path: '/horoscope?tab=monthly', label: { zh: '本月运势', en: 'Monthly Horoscope' } },
+        { path: '/horoscope?tab=yearly', label: { zh: '年度运势', en: 'Yearly Horoscope' } },
+              ],
     },
     {
       title: { zh: '⭐ 基础服务', en: '⭐ Basic Services' },

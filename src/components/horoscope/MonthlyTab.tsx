@@ -44,10 +44,10 @@ const MonthlyTab = () => {
           <button
             key={sign.symbol}
             onClick={() => setSelectedSign(sign.symbol)}
-            className={`px-4 py-2 rounded-full font-semibold border transition duration-300 text-sm sm:text-base ${
+            className={`horoscope-sign-button ${
               selectedSign === sign.symbol
-                ? 'bg-purple-600 text-white shadow-md'
-                : 'bg-white text-purple-600 border-purple-300 hover:bg-purple-200'
+                ? 'horoscope-sign-button-active'
+                : 'horoscope-sign-button-inactive'
             }`}
           >
             {getText(sign.name_zh, sign.name_en)}

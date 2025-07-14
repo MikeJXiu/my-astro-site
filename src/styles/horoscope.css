@@ -55,3 +55,55 @@
 .lucky-item-text {
   @apply text-white/90 text-sm leading-tight;
 }
+
+/* Horoscope 星座选择按钮统一风格 */
+.horoscope-sign-button {
+  @apply relative px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ease-in-out;
+}
+
+.horoscope-sign-button-inactive {
+  @apply bg-white/10 text-white hover:bg-white/20 hover:scale-[1.04] backdrop-blur-sm;
+}
+
+.horoscope-sign-button-active {
+  @apply bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg ring-2 ring-purple-300 ring-offset-1 hover:scale-[1.06];
+}
+
+/* ========== 星光标题动画效果 ========== */
+/* 为“今日 / 本月 / 今年运势”等页面标题添加柔和发光动画 */
+.glow-title {
+  /* 多重文字阴影模拟柔光外发光效果 */
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.4),
+    0 0 12px rgba(189, 131, 255, 0.6),
+    0 0 20px rgba(189, 131, 255, 0.5);
+
+  /* 添加循环动画：模拟星光闪动 */
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* 动画关键帧：让光晕轻微变化，产生脉冲感 */
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 6px rgba(255, 255, 255, 0.4),
+      0 0 12px rgba(189, 131, 255, 0.6),
+      0 0 20px rgba(189, 131, 255, 0.5);
+  }
+  50% {
+    text-shadow:
+      0 0 3px rgba(255, 255, 255, 0.3),
+      0 0 8px rgba(189, 131, 255, 0.4),
+      0 0 14px rgba(189, 131, 255, 0.3);
+  }
+}
+
+/* ========== 页面主标题 glow-text 样式 ========== */
+.glow-text {
+  color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #e0b3ff,
+    0 0 15px #c77dff,
+    0 0 20px #a64dff;
+}
